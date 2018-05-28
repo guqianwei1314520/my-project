@@ -31,6 +31,11 @@ export default new Router({
       path: '/upload',
       name: 'FileUpload',
       component: resolve => require(['../components/FileUpload.vue'], resolve)
+    },
+    {
+      path:'/addTickets',
+      name:"AddTickets",
+      component:resolve => require(['../components/AddTickets.vue'],resolve)
     }
 
   ]

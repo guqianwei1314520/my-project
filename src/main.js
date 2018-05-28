@@ -7,10 +7,12 @@ import mixins from './mixins'
 import http from './service/request'
 import el from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import cookie from "vue-cookie"
 
 Vue.config.productionTip = false
 Vue.mixin(mixins)
 Vue.use(el);
+Vue.use(cookie);
 
 Vue.prototype.$http=http;
 

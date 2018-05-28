@@ -53,23 +53,26 @@
           queryTickects(){
             this.$http.get("/tickets/all",{
               headers:{
-                "token":sessionStorage.getItem("token")
+                "token":this.$cookie.get('token')/*sessionStorage.getItem("token")*/
               }
             }).then((response)=>{
               if(response && response.data && 0==response.data.code){
                 this.tickets=response.data.data;
-                sessionStorage.setItem("token",response.data.token);
+                /*sessionStorage.setItem("token",response.data.token);*/
+                this.$cookie.set("token",response.data.token,{ expires: '15M' });
               }else{
                /* this.$message({
                   message: "失败！",
                   type: "error",
                 });*/
-               sessionStorage.removeItem("token");
+               /*sessionStorage.removeItem("token");*/
+                this.$cookie.delete('token');
                 this.$router.push("/login");
               }
 
             }).catch((err)=>{
-              sessionStorage.removeItem("token");
+              /*sessionStorage.removeItem("token");*/
+              this.$cookie.delete('token');
               this.$router.push("/login");
             });
           }

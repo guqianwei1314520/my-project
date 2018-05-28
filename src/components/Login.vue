@@ -18,7 +18,8 @@
           }
       },
       mounted(){
-        let token=sessionStorage.getItem("token");
+        /*let token=sessionStorage.getItem("token");*/
+        let token=this.$cookie.get('token');
         if(token){
           this.$router.push("/ticketsList")
         }
@@ -31,12 +32,19 @@
             });
             this.$http.post("/login/userLogin",data).then((response)=>{
                if(response && response.data && 0==response.data.code){
-                 sessionStorage.setItem("token",response.data.token);
+                /* sessionStorage.setItem("token",response.data.token);*/
+                 this.$cookie.set('token', response.data.token, { expires: '15M' });
+                 this.$cookie.set("roleId",response.data.roleId, { expires: '15M' });
                  /*this.$message({
                    message: '登录成功！'+response.data.token,
                    type: 'success'
                  });*/
-                 this.$router.push("/ticketsList")
+                 if(1==response.data.roleId){
+                   this.$router.push("/addTickets")
+                 }else if(2==response.data.roleId){
+                   this.$router.push("/ticketsList")
+                 }
+
                }else{
                  this.$message({
                    message: '登录失败！',
