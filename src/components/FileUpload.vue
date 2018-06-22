@@ -4,8 +4,7 @@
         class="upload-demo"
         action="/api/upload/test"
         multiple
-        :limit="3"
-        :file-list="fileList">
+        :limit="3">
         <el-button size="small" type="primary">点击上传</el-button>
       </el-upload>
     </div>
@@ -16,7 +15,6 @@
         name: "FileUpload",
         data(){
           return{
-            fileList:[]
           }
         }
     }

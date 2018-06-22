@@ -9,7 +9,7 @@ module.exports = {
 
     // Paths
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: path.join(__dirname, '../dist/'),
     proxyTable: {'/api': {
         target: 'http://192.168.1.39:8017',//设置你调用的接口域名和端口号 别忘了加http
         changeOrigin: true,
@@ -49,7 +49,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: path.join(__dirname, '../dist/'),
 
     /**
      * Source Maps

@@ -15,7 +15,7 @@ export default new Router({
     {
       path: '/test',
       name: 'Test',
-      component: resolve => require(['../components/Test.vue'], resolve)
+      component: resolve => require(['../components/Test.vue'], resolve)   //懒加载
     },
     {
       path: '/login',
@@ -36,6 +36,16 @@ export default new Router({
       path:'/addTickets',
       name:"AddTickets",
       component:resolve => require(['../components/AddTickets.vue'],resolve)
+    },
+    {
+      path:"/home",
+      name:"Home",
+      component:resolve => require(["../components/Home.vue"],resolve)
+    },
+    {
+      path:"/editor",
+      name:"Editor",
+      component:resolve => require(["../components/UseEditor.vue"],resolve)
     }
 
   ]
